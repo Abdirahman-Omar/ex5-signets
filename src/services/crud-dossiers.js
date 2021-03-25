@@ -24,7 +24,7 @@ export async function lireTout(uid) {
   const dossiers = [];
   /************************************************************** Exercice #5 : question A **************************/
   // Modifier très légèrement la ligne suivante
-  const reponse = await firestore.collection(utilRef).doc(uid).collection(dossRef).get();
+  const reponse = await firestore.collection(utilRef).doc(uid).collection(dossRef).orderBy("datemodif","desc").get();
   reponse.forEach(
     doc => {
       dossiers.push({id: doc.id, ...doc.data()})
