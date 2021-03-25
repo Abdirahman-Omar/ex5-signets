@@ -42,7 +42,11 @@ export async function lireTout(uid) {
 export async function supprimer(uid, idd) {
   /************************************************************** Exercice #5 : question B **************************/
   // Une seule ligne de code suffit
-  // return await [votre instruction pour supprimer le dossier de l'utilisateur connecté dans Firestore ici];
+  return await firestore.collection(utilRef).doc(uid).collection(dossRef).doc(idd).delete().then(
+    () => console.log("Le dossier est supprimé !")
+  ).catch(
+    (error) => console.log("Erreur... nous n'avons pas réussi à supprimer le dossier : ",error)
+  );
 }
 
 /**
