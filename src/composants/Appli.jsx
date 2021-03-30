@@ -8,6 +8,9 @@ import { useEffect, useState } from 'react';
 import AjouterDossier from './AjouterDossier';
 import * as crudDossiers from '../services/crud-dossiers';
 import * as crudUtilisateurs from '../services/crud-utilisateurs';
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 
 export default function Appli() {
   // État de l'utilisateur (pas connecté = null / connecté = objet FB-Auth spécial)
