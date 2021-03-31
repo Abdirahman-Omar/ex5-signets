@@ -21,7 +21,7 @@ export async function creer(uid, dossier) {
  * 
  * @returns {Promise<any[]>} Promesse avec le tableau des documents de dossiers
  */
-export async function lireTout(uid,champTri,direction) {
+export async function lireTout(uid,champTri = "datemodif",direction = "desc") {
   const dossiers = [];
   /************************************************************** Exercice #5 : question A **************************/
   // Modifier très légèrement la ligne suivante

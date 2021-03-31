@@ -41,26 +41,24 @@ export default function ListeDossiers({ utilisateur, etatDossiers }) {
   }
 
   function gererLesTris(evt) {
-    console.log(evt.target.value)
-
+    
+    
     switch (evt.target.value) {
       case 0:
-        crudDossiers.lireTout(utilisateur.id, "datemodif", "desc").then(
-          dossiers => setDossiers(dossiers));
+        crudDossiers.lireTout(utilisateur.uid, "datemodif", "desc").then(dossiers => setDossiers(dossiers));
         break;
       case 1:
-        crudDossiers.lireTout(utilisateur.id, "nom", "asc").then(
-          dossiers => setDossiers(dossiers));
-
+        crudDossiers.lireTout(utilisateur.uid, "nom", "asc").then(dossiers => setDossiers(dossiers));
         break;
+
       case 2:
-         crudDossiers.lireTout(utilisateur.id, "nom", "desc").then(
-          dossiers => setDossiers(dossiers));
+        crudDossiers.lireTout(utilisateur.uid, "nom", "desc").then(dossiers => setDossiers(dossiers));
         break;
     }
-  
+    
   }
 
+ 
 
   return (
     <>
@@ -68,12 +66,14 @@ export default function ListeDossiers({ utilisateur, etatDossiers }) {
       <FormControl style={{ marginLeft: "100px", marginTop: "50px", minWidth: 180 }}>
         <InputLabel id="demo-controlled-open-select-label">Tri des dossiers</InputLabel>
         <Select
+        
+        defaultValue={0}
           onChange={gererLesTris}
 
         >
           <MenuItem value={0}>Date de modification descendante</MenuItem>
-          <MenuItem value={1}>alphabétique ascendant</MenuItem>
-          <MenuItem value={2}>alphabétique descendant</MenuItem>
+          <MenuItem value={1}>Alphabétique ascendant</MenuItem>
+          <MenuItem value={2}>Alphabétique descendant</MenuItem>
         </Select>
 
       </FormControl>
