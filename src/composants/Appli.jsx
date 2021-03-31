@@ -6,15 +6,10 @@ import AddIcon from '@material-ui/icons/Add';
 import Accueil from './Accueil';
 import { useEffect, useState } from 'react';
 import AjouterDossier from './AjouterDossier';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
+
 import * as crudDossiers from '../services/crud-dossiers';
 import * as crudUtilisateurs from '../services/crud-utilisateurs';
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
+
 
 export default function Appli() {
   // État de l'utilisateur (pas connecté = null / connecté = objet FB-Auth spécial)
@@ -33,6 +28,7 @@ export default function Appli() {
   // APRÈS l'affichage du composant
   useEffect(() => crudUtilisateurs.observerConnexion(setUtilisateur), []);
   
+
   /**
    * Gérer la soumission du formulaire pour ajouter un nouveau dossier
    * @param {string} nom nom du dossier
@@ -54,7 +50,10 @@ export default function Appli() {
     );
     // Fermer la boîte de dialogue
     setOuvertAD(false);
+
   }
+
+ 
 
   return (
     <div className="Appli">
@@ -64,12 +63,7 @@ export default function Appli() {
           <>
             <Entete utilisateur={utilisateur} />
             <section className="contenu-principal">
-              <FormControl style={{marginLeft:"100px", marginTop:"50px", minWidth:180}}>
-                <InputLabel id="demo-controlled-open-select-label">Tri des dossiers</InputLabel>
-                <Select>
-                  <MenuItem>Date de modification descendante</MenuItem>
-                </Select>
-              </FormControl>
+             
               <ListeDossiers utilisateur={utilisateur} etatDossiers={etatDossiers} />
               <AjouterDossier ouvert={ouvertAD} setOuvert={setOuvertAD} gererAjout={gererAjouter} />
               <Fab onClick={() => setOuvertAD(true)} className="ajoutRessource" color="primary" aria-label="Ajouter dossier">

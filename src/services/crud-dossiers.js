@@ -18,13 +18,14 @@ export async function creer(uid, dossier) {
 /**
  * Obtenir tous les dossiers de l'utilisateur connecté
  * @param {String} uid identifiant d'utilisateur Firebase
+ * 
  * @returns {Promise<any[]>} Promesse avec le tableau des documents de dossiers
  */
-export async function lireTout(uid) {
+export async function lireTout(uid,champTri,direction) {
   const dossiers = [];
   /************************************************************** Exercice #5 : question A **************************/
   // Modifier très légèrement la ligne suivante
-  const reponse = await firestore.collection(utilRef).doc(uid).collection(dossRef).orderBy("datemodif","desc").get();
+  const reponse = await firestore.collection(utilRef).doc(uid).collection(dossRef).orderBy(champTri,direction).get();
   reponse.forEach(
     doc => {
       dossiers.push({id: doc.id, ...doc.data()})
